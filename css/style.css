@@ -1051,3 +1051,49 @@ h1, h2, h3, h4, .font-serif {
     align-items: flex-start;
   }
 }
+
+@media (max-width: 980px) {
+  .milhas-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .milhas-visual-wrapper {
+    order: 0;
+  }
+
+  .milhas-badge-float {
+    position: static;
+    max-width: 100%;
+    margin-top: 1rem;
+  }
+
+  .btn-milhas-cta {
+    width: 100%;
+  }
+}
+
+@media (max-width: 560px) {
+  .milhas-bullet-item {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .milhas-bullet-icon {
+    width: 46px;
+    height: 46px;
+  }
+
+  .milhas-badge-float {
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 0.85rem 0.9rem;
+  }
+
+  .milhas-bullet-text h4 {
+    font-size: 1rem;
+  }
+
+  .milhas-bullet-text p {
+    font-size: 0.95rem;
+  }
+}

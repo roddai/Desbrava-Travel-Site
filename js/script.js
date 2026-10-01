@@ -73,6 +73,8 @@ document.addEventListener('DOMContentLoaded', () => {
     // 5. Contact Form Validation and Visual Feedback
     const form = document.getElementById('contactForm');
     const successBanner = document.getElementById('formSuccess');
+    const emailRecipient = 'desbravatravel@desbravatravel.com.br';
+    const whatsappNumber = '5511997236706';
 
     if (form) {
       form.addEventListener('submit', (e) => {
@@ -88,7 +90,26 @@ document.addEventListener('DOMContentLoaded', () => {
           return;
         }
 
-        // Show confirmation message
+        const subject = `Novo contato - ${name}`;
+        const emailBody = [
+          `Nome: ${name}`,
+          `E-mail: ${email}`,
+          `Telefone: ${phone}`,
+          '',
+          'Mensagem:',
+          message
+        ].join('\n');
+
+        const whatsappMessage = `Olá! Meu nome é ${name}. Gostaria de saber mais sobre consultoria em milhas aéreas e planejamento de viagens.\n\nE-mail: ${email}\nTelefone: ${phone}\n\nMensagem:\n${message}`;
+
+        const mailtoUrl = `mailto:${emailRecipient}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(emailBody)}`;
+        const whatsappUrl = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(whatsappMessage)}`;
+
+        window.location.href = mailtoUrl;
+        setTimeout(() => {
+          window.open(whatsappUrl, '_blank');
+        }, 200);
+
         if (successBanner) {
           successBanner.style.display = 'block';
           successBanner.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
