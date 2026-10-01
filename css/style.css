@@ -703,6 +703,56 @@ h1, h2, h3, h4, .font-serif {
   transform: scale(1.05);
 }
 
+.project-preview-section {
+  background: var(--charcoal);
+  border-top: 1px solid var(--border-subtle);
+}
+
+.project-preview-copy {
+  max-width: 620px;
+}
+
+.project-preview-copy .section-label {
+  color: var(--accent);
+}
+
+.project-preview-title {
+  font-size: clamp(2.2rem, 4vw, 3.2rem);
+  color: #FFFFFF;
+  margin-bottom: 1.5rem;
+}
+
+.project-preview-copy p {
+  font-size: 1.08rem;
+  color: rgba(242, 233, 228, 0.82);
+  line-height: 1.8;
+  margin-bottom: 1rem;
+}
+
+.project-preview-copy p strong {
+  color: #FFFFFF;
+  font-weight: 700;
+}
+
+.project-preview-copy .project-preview-cta {
+  margin-top: 1.5rem;
+}
+
+.project-preview-badge {
+  position: absolute;
+  left: 1.25rem;
+  bottom: 1.25rem;
+  background: rgba(255, 255, 255, 0.92);
+  color: var(--charcoal);
+  border: 1px solid rgba(30, 77, 99, 0.08);
+  border-radius: 14px;
+  padding: 0.75rem 1rem;
+  box-shadow: 0 12px 28px rgba(30, 77, 99, 0.08);
+  font-size: 0.8rem;
+  font-weight: 600;
+  max-width: 220px;
+}
+
 .contact-section {
   background-color: var(--parchment);
 }
@@ -1002,6 +1052,61 @@ h1, h2, h3, h4, .font-serif {
   font-size: 0.925rem;
 }
 
+.section-surface-cream {
+  background-color: var(--parchment);
+}
+
+.section-surface-cream-light {
+  background-color: var(--parchment-light);
+  border-top: 1px solid var(--border-subtle);
+}
+
+.section-heading {
+  text-align: center;
+  max-width: 680px;
+  margin: 0 auto;
+}
+
+.section-heading--spaced {
+  margin-bottom: 3.5rem;
+}
+
+.section-title {
+  font-size: clamp(2rem, 3.5vw, 2.75rem);
+  color: var(--charcoal);
+  margin-bottom: 1.15rem;
+}
+
+.section-title--light {
+  color: #FFFFFF;
+}
+
+.section-copy {
+  font-size: 1.05rem;
+  color: var(--text-body);
+  line-height: 1.65;
+}
+
+.section-copy--lead {
+  line-height: 1.7;
+}
+
+.section-copy--muted {
+  color: var(--text-muted);
+  font-size: 1.05rem;
+  margin-top: 0.5rem;
+}
+
+.section-title--contact {
+  font-size: clamp(2.2rem, 3.8vw, 3rem);
+  color: var(--charcoal);
+}
+
+.form-button-submit {
+  width: 100%;
+  padding: 0.95rem;
+}
+
 @media (max-width: 991px) {
   .what-we-do-grid {
     grid-template-columns: 1fr;
@@ -1096,4 +1201,25 @@ h1, h2, h3, h4, .font-serif {
   .milhas-bullet-text p {
     font-size: 0.95rem;
   }
+}
+
+.project-preview-grid {
+  display: grid;
+  grid-template-columns: 0.9fr 1.1fr;
+  gap: 3rem;
+  align-items: center;
+}
+
+.project-preview-visual {
+  order: -1;
+}
+
+.project-preview-visual img {
+  width: 100%;
+  height: 100%;
+  min-height: 420px;
+  object-fit: cover;
+  border-radius: 24px;
+  box-shadow: 0 18px 48px rgba(30, 77, 99, 0.12);
+  display: block;
 }
