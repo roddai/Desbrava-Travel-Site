@@ -4,70 +4,276 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>A Vida já Começou</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Playfair+Display:wght@600;700;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="css/style.css">
   <style>
+    :root {
+      --accent: #FF6B35;
+      --charcoal: #1E4D63;
+      --charcoal-deep: #0F2E3D;
+      --parchment: #F2E9E4;
+      --parchment-light: #FAF6F4;
+      --text-body: #2B4552;
+      --text-muted: #5B7280;
+      --white: #FFFFFF;
+      --shadow-soft: 0 18px 45px rgba(30, 77, 99, 0.08);
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
     body {
-      background: linear-gradient(135deg, #f7f0ee 0%, #f2e9e4 100%);
-      color: #1E4D63;
+      margin: 0;
       font-family: 'Outfit', sans-serif;
+      background: linear-gradient(135deg, #f8f4f2 0%, #f1ece8 100%);
+      color: var(--text-body);
     }
 
-    .coming-soon-page {
+    a {
+      text-decoration: none;
+    }
+
+    .journey-page {
       min-height: 100vh;
+      padding: 2rem 1.5rem 4rem;
+    }
+
+    .container-journey {
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .journey-hero {
+      background: linear-gradient(135deg, rgba(30, 77, 99, 0.96), rgba(15, 46, 61, 0.96));
+      border-radius: 32px;
+      padding: 4rem 3rem;
+      box-shadow: var(--shadow-soft);
+      overflow: hidden;
+    }
+
+    .journey-grid {
       display: grid;
-      place-items: center;
-      padding: 3rem 1.5rem;
+      grid-template-columns: 1.08fr 0.92fr;
+      gap: 3rem;
+      align-items: center;
     }
 
-    .coming-soon-card {
-      max-width: 760px;
-      width: 100%;
-      background: rgba(255, 255, 255, 0.8);
-      border: 1px solid rgba(30, 77, 99, 0.08);
-      border-radius: 24px;
-      box-shadow: 0 18px 45px rgba(30, 77, 99, 0.08);
-      padding: 3rem 2rem;
-      text-align: center;
+    .journey-label {
+      display: inline-block;
+      margin-bottom: 1.1rem;
+      font-size: 0.82rem;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      font-weight: 700;
+      color: var(--accent);
     }
 
-    .coming-soon-card .section-label {
-      color: #FF6B35;
-      margin-bottom: 1rem;
+    .journey-title {
+      margin: 0;
+      color: var(--white);
+      font-family: 'Playfair Display', Georgia, serif;
+      font-weight: 700;
+      line-height: 1.08;
+      letter-spacing: -0.04em;
     }
 
-    .coming-soon-card h1 {
-      font-size: clamp(2.2rem, 5vw, 4rem);
-      color: #1E4D63;
-      margin-bottom: 1rem;
+    .journey-title .lead {
+      display: block;
+      font-size: clamp(1.1rem, 2vw, 1.6rem);
+      font-family: 'Outfit', sans-serif;
+      letter-spacing: 0;
+      font-weight: 400;
+      color: rgba(255, 255, 255, 0.8);
+      margin-bottom: 0.7rem;
     }
 
-    .coming-soon-card p {
+    .journey-title .main {
+      display: block;
+      font-size: clamp(2.2rem, 4vw, 4rem);
+      color: var(--white);
+      line-height: 1;
+    }
+
+    .journey-copy {
+      margin-top: 1.5rem;
+      max-width: 580px;
+      color: rgba(242, 233, 228, 0.88);
       font-size: 1.08rem;
       line-height: 1.8;
-      color: #2B4552;
-      margin-bottom: 2rem;
     }
 
-    .coming-soon-actions {
+    .journey-copy strong {
+      color: var(--white);
+      font-weight: 700;
+    }
+
+    .journey-cta-wrap {
+      margin-top: 2rem;
       display: flex;
-      justify-content: center;
+      align-items: center;
       gap: 1rem;
       flex-wrap: wrap;
+    }
+
+    .journey-cta-group {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    .journey-cta-text {
+      font-size: 1.05rem;
+      font-weight: 600;
+      color: var(--white);
+      letter-spacing: 0.01em;
+    }
+
+    .journey-button,
+    .journey-button-secondary {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.7rem;
+      padding: 0.95rem 1.6rem;
+      border-radius: 999px;
+      font-weight: 700;
+      transition: transform 0.25s ease, box-shadow 0.25s ease;
+    }
+
+    .journey-button {
+      background: var(--accent);
+      color: var(--white);
+      box-shadow: 0 12px 28px rgba(255, 107, 53, 0.28);
+    }
+
+    .journey-button-secondary {
+      background: transparent;
+      border: 1px solid rgba(255, 255, 255, 0.4);
+      color: var(--white);
+    }
+
+    .journey-button:hover,
+    .journey-button-secondary:hover {
+      transform: translateY(-2px);
+    }
+
+    .journey-button:hover {
+      box-shadow: 0 18px 34px rgba(255, 107, 53, 0.35);
+    }
+
+    .journey-button-secondary:hover {
+      background: rgba(255, 255, 255, 0.06);
+    }
+
+    .journey-visual {
+      position: relative;
+    }
+
+    .journey-visual img {
+      width: 100%;
+      height: auto;
+      max-height: 520px;
+      object-fit: contain;
+      border-radius: 28px;
+      display: block;
+      box-shadow: 0 16px 42px rgba(15, 46, 61, 0.18);
+    }
+
+    .journey-badge {
+      position: absolute;
+      left: 1.2rem;
+      bottom: 1.2rem;
+      background: rgba(255, 255, 255, 0.9);
+      border: 1px solid rgba(30, 77, 99, 0.08);
+      color: var(--charcoal);
+      border-radius: 14px;
+      padding: 0.8rem 1rem;
+      font-size: 0.78rem;
+      font-weight: 700;
+      max-width: 220px;
+      box-shadow: 0 10px 32px rgba(30, 77, 99, 0.08);
+    }
+
+    @media (max-width: 980px) {
+      .journey-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .journey-visual {
+        order: -1;
+      }
+    }
+
+    @media (max-width: 640px) {
+      .journey-hero {
+        padding: 2.5rem 1.25rem;
+      }
+
+      .journey-cta-wrap,
+      .journey-cta-group {
+        align-items: flex-start;
+        flex-direction: column;
+      }
+
+      .journey-button,
+      .journey-button-secondary {
+        width: 100%;
+      }
     }
   </style>
 </head>
 <body>
-  <main class="coming-soon-page">
-    <div class="coming-soon-card">
-      <span class="section-label">A VIDA JÁ COMEÇOU</span>
-      <h1>Em construção</h1>
-      <p>
-        Esta página representa a jornada que será lançada em breve. A experiência digital interativa está sendo criada para acolher mulheres que querem transformar a direção da vida com mais leveza, propósito e coragem.
-      </p>
+  <main class="journey-page">
+    <div class="container-journey">
+      <section class="journey-hero">
+        <div class="journey-grid">
+          <div class="journey-copy-wrap">
+            <span class="journey-label">A vida já começou • uma jornada de 31 dias</span>
 
-      <div class="coming-soon-actions">
-        <a href="index.html" class="btn-desbrava btn-orange">Voltar para a página inicial</a>
-      </div>
+            <h1 class="journey-title">
+              <span class="lead">Isso não é uma simulação de voo</span>
+              <span class="main">A vida já começou.</span>
+            </h1>
+
+            <p class="journey-copy">
+              Você não precisa mudar tudo de uma vez. Precisa começar a mudar a direção.
+            </p>
+
+            <p class="journey-copy">
+              Uma experiência digital interativa para mulheres que cuidam de tudo e de todos — e perceberam que estão se deixando para depois.
+            </p>
+
+            <div class="journey-cta-wrap">
+              <div class="journey-cta-group">
+                <a href="#escolha-seu-ponto-de-partida" class="journey-button-secondary">
+                  <span>Quero mudar minha direção</span>
+                </a>
+              </div>
+
+              <a href="#a-jornada" class="journey-button">
+                <span>Conhecer a jornada</span>
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                  <line x1="5" y1="12" x2="19" y2="12"></line>
+                  <polyline points="12 5 19 12 12 19"></polyline>
+                </svg>
+              </a>
+            </div>
+          </div>
+
+          <div class="journey-visual">
+            <img src="images/daiane-rosa-autora.png" alt="Daiane Rosa, autora e idealizadora da jornada A Vida já Começou">
+            <div class="journey-badge">Uma jornada para recomeçar com propósito.</div>
+          </div>
+        </div>
+      </section>
     </div>
   </main>
 </body>
