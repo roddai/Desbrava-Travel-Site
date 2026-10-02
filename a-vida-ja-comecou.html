@@ -1,12 +1,15 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>A Vida já Começou</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Playfair+Display:wght@600;700;800&display=swap" rel="stylesheet">
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Outfit:wght@300;400;500;600;700;800&display=swap"
+    rel="stylesheet">
   <link rel="stylesheet" href="css/style.css">
   <style>
     :root {
@@ -18,7 +21,34 @@
       --text-body: #2B4552;
       --text-muted: #5B7280;
       --white: #FFFFFF;
+      --green-button: rgba(158, 255, 63, 1);
+      --page-background: linear-gradient(135deg, #f8f4f2 0%, #f1ece8 100%);
+      --surface: #FFFFFF;
+      --surface-soft: rgba(255, 255, 255, 0.72);
+      --text-strong: var(--charcoal);
+      --text-gradient: linear-gradient(100deg, #1E4D63 0%, #FF6B35 100%);
+      --text-gradient-on-dark: linear-gradient(100deg, #82DDD3 0%, #FFAD77 100%);
+      --history-surface: linear-gradient(135deg, #FFF0ED 0%, #FFE3D8 52%, #FCE7EC 100%);
+      --history-quote: linear-gradient(115deg, #71364F 0%, #A64D55 55%, #C66C4C 100%);
+      --history-highlight: linear-gradient(100deg, #863B5B 0%, #BE5653 56%, #A15B22 100%);
+      --border-soft: rgba(30, 77, 99, 0.08);
       --shadow-soft: 0 18px 45px rgba(30, 77, 99, 0.08);
+      --font-heading: 'Outfit', sans-serif;
+      --font-body: 'Inter', sans-serif;
+    }
+
+    :root[data-theme="dark"] {
+      color-scheme: dark;
+      --page-background: linear-gradient(135deg, #111b20 0%, #18272d 100%);
+      --surface: #22333b;
+      --surface-soft: rgba(34, 51, 59, 0.94);
+      --text-body: #d5e0e4;
+      --text-muted: #a9bbc2;
+      --text-strong: #f0f4f5;
+      --text-gradient: linear-gradient(100deg, #82DDD3 0%, #FFAD77 100%);
+      --history-highlight: linear-gradient(100deg, #FF9BB6 0%, #FFAE8A 56%, #FFD075 100%);
+      --border-soft: rgba(213, 224, 228, 0.14);
+      --shadow-soft: 0 18px 45px rgba(0, 0, 0, 0.2);
     }
 
     * {
@@ -31,9 +61,17 @@
 
     body {
       margin: 0;
-      font-family: 'Outfit', sans-serif;
-      background: linear-gradient(135deg, #f8f4f2 0%, #f1ece8 100%);
+      font-family: var(--font-body);
+      background: var(--page-background);
       color: var(--text-body);
+    }
+
+    h1,
+    h2,
+    h3,
+    h4,
+    .font-serif {
+      font-family: var(--font-heading);
     }
 
     a {
@@ -51,11 +89,125 @@
     }
 
     .journey-hero {
+      position: relative;
       background: linear-gradient(135deg, rgba(30, 77, 99, 0.96), rgba(15, 46, 61, 0.96));
       border-radius: 32px;
       padding: 4rem 3rem;
       box-shadow: var(--shadow-soft);
       overflow: hidden;
+    }
+
+    section[id] {
+      scroll-margin-top: 6rem;
+    }
+
+    .journey-word-ribbon {
+      margin: 1.25rem 0 1.75rem;
+      padding: 0.45rem;
+      border: 1px solid var(--border-soft);
+      border-radius: 999px;
+      background: rgba(250, 246, 244, 0.92);
+      overflow: hidden;
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      box-shadow: 0 10px 30px rgba(15, 46, 61, 0.1);
+    }
+
+    .journey-word-ribbon-track {
+      display: flex;
+      position: relative;
+      left: 50%;
+      width: max-content;
+      justify-content: flex-start;
+      overflow: hidden;
+      animation: journey-nav-loop 40s linear infinite;
+    }
+
+    .journey-word-ribbon-group {
+      display: flex;
+      flex: 0 0 auto;
+      gap: 0.55rem;
+      padding-right: 0.55rem;
+      margin: 0;
+      padding-left: 0;
+      list-style: none;
+    }
+
+    .journey-word-ribbon-group[aria-hidden="true"] {
+      display: flex;
+    }
+
+    .journey-word-ribbon-group li {
+      display: flex;
+      align-items: center;
+      flex: 0 0 auto;
+      padding: 0.7rem 0.8rem;
+      color: var(--charcoal);
+      font-size: 0.9rem;
+      font-weight: 600;
+      white-space: nowrap;
+    }
+
+    .journey-word-ribbon-track:focus-visible {
+      outline: 2px solid var(--accent);
+      outline-offset: -2px;
+      border-radius: 999px;
+    }
+
+    @keyframes journey-nav-loop {
+      from {
+        transform: translateX(-25%);
+      }
+
+      to {
+        transform: translateX(-75%);
+      }
+    }
+
+    @keyframes journey-nav-loop-mobile {
+      to {
+        transform: translateX(-50%);
+      }
+    }
+
+    .journey-theme-toggle {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 44px;
+      height: 44px;
+      margin: 0 0 1.5rem auto;
+      padding: 0;
+      border: 1px solid rgba(255, 255, 255, 0.4);
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.08);
+      color: var(--white);
+      cursor: pointer;
+      transition: background 0.2s ease, transform 0.2s ease;
+    }
+
+    .journey-theme-toggle:hover {
+      background: rgba(255, 255, 255, 0.16);
+      transform: rotate(-8deg);
+    }
+
+    .journey-theme-toggle:focus-visible {
+      outline: 3px solid var(--accent);
+      outline-offset: 3px;
+    }
+
+    .journey-theme-toggle svg {
+      width: 20px;
+      height: 20px;
+    }
+
+    .journey-theme-toggle .icon-moon,
+    :root[data-theme="dark"] .journey-theme-toggle .icon-sun {
+      display: none;
+    }
+
+    :root[data-theme="dark"] .journey-theme-toggle .icon-moon {
+      display: block;
     }
 
     .journey-grid {
@@ -78,7 +230,7 @@
     .journey-title {
       margin: 0;
       color: var(--white);
-      font-family: 'Playfair Display', Georgia, serif;
+      font-family: var(--font-heading);
       font-weight: 700;
       line-height: 1.08;
       letter-spacing: -0.04em;
@@ -87,7 +239,7 @@
     .journey-title .lead {
       display: block;
       font-size: clamp(1.1rem, 2vw, 1.6rem);
-      font-family: 'Outfit', sans-serif;
+      font-family: var(--font-heading);
       letter-spacing: 0;
       font-weight: 400;
       color: rgba(255, 255, 255, 0.8);
@@ -99,6 +251,23 @@
       font-size: clamp(2.2rem, 4vw, 4rem);
       color: var(--white);
       line-height: 1;
+    }
+
+    .text-gradient {
+      background-image: var(--text-gradient);
+      background-clip: text;
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .journey-title .main.text-gradient {
+      color: transparent;
+      background-image: var(--text-gradient-on-dark);
+    }
+
+    .journey-self-history-copy .journey-self-history-highlight.text-gradient {
+      color: transparent;
+      background-image: var(--history-highlight);
     }
 
     .journey-copy {
@@ -149,7 +318,9 @@
     }
 
     .journey-button {
-      background: var(--accent);
+      background: linear-gradient(110deg, #9EFF3F 0%, #A8FF50 34%, #B6F75A 68%, #9EFF3F 100%);
+      background-size: 280% 280%;
+      animation: journey-color-drift 9s ease-in-out infinite alternate;
       color: var(--white);
       box-shadow: 0 12px 28px rgba(255, 107, 53, 0.28);
     }
@@ -238,7 +409,7 @@
 
     .journey-problem h2 {
       margin: 0;
-      font-family: 'Playfair Display', Georgia, serif;
+      font-family: var(--font-heading);
       font-size: clamp(2rem, 4vw, 3rem);
       color: var(--charcoal);
       line-height: 1.12;
@@ -281,7 +452,8 @@
       margin-bottom: 2.5rem;
     }
 
-    .journey-path-label, .journey-self-path-label {
+    .journey-path-label,
+    .journey-self-path-label {
       display: inline-block;
       margin-bottom: 0.9rem;
       font-size: 0.8rem;
@@ -293,7 +465,7 @@
 
     .journey-path h2 {
       margin: 0 0 1rem;
-      font-family: 'Playfair Display', Georgia, serif;
+      font-family: var(--font-heading);
       font-size: clamp(2.2rem, 4vw, 3.4rem);
       line-height: 1.08;
       letter-spacing: -0.04em;
@@ -373,7 +545,7 @@
       grid-template-columns: 1.02fr 0.98fr;
       gap: 2.5rem;
       align-items: center;
-      background: rgba(255, 255, 255, 0.7);
+      background: var(--history-surface);
       border: 1px solid rgba(30, 77, 99, 0.08);
       border-radius: 32px;
       box-shadow: var(--shadow-soft);
@@ -397,17 +569,17 @@
       position: absolute;
       left: 1.25rem;
       right: 1.25rem;
-      bottom: 1.25rem;
-      background: rgba(255, 255, 255, 0.9);
-      border: 1px solid rgba(30, 77, 99, 0.08);
+      top: 1.25rem;
+      background: var(--history-quote);
+      border: 1px solid rgba(255, 255, 255, 0.42);
       border-radius: 18px;
       padding: 1rem 1.2rem;
-      color: var(--charcoal);
-      font-family: 'Playfair Display', Georgia, serif;
+      color: #FFFFFF;
+      font-family: var(--font-heading);
       font-size: clamp(1.2rem, 2vw, 1.7rem);
       line-height: 1.4;
       letter-spacing: -0.03em;
-      box-shadow: 0 14px 24px rgba(30, 77, 99, 0.1);
+      box-shadow: 0 14px 28px rgba(73, 33, 47, 0.2);
     }
 
     .journey-self-history-copy {
@@ -430,7 +602,7 @@
 
     .journey-self-history-copy h2 {
       margin: 0;
-      font-family: 'Playfair Display', Georgia, serif;
+      font-family: var(--font-heading);
       font-size: clamp(2.2rem, 4vw, 3.4rem);
       line-height: 1.08;
       letter-spacing: -0.04em;
@@ -452,7 +624,7 @@
       line-height: 1.35;
       font-weight: 800;
       color: var(--charcoal);
-      font-family: 'Playfair Display', Georgia, serif;
+      font-family: var(--font-heading);
       letter-spacing: -0.03em;
       margin-top: 0.3rem;
     }
@@ -486,7 +658,7 @@
 
     .journey-offer-left h2 {
       margin: 0;
-      font-family: 'Playfair Display', Georgia, serif;
+      font-family: var(--font-heading);
       font-size: clamp(2.1rem, 4vw, 3.2rem);
       line-height: 1.08;
       letter-spacing: -0.04em;
@@ -501,26 +673,36 @@
     }
 
     .journey-offer-item {
-      background: linear-gradient(135deg, rgba(255, 107, 53, 0.22), rgba(255, 107, 53, 0.08));
-      border: 1px solid rgba(255, 107, 53, 0.35);
-      border-radius: 20px;
+      background: linear-gradient(115deg, #FFAE52 0%, #FFE45C 30%, #4FD1B5 68%, #79D7FF 100%);
+      background-size: 280% 280%;
+      animation: journey-color-drift 9s ease-in-out infinite alternate;
+      border: 1px solid rgba(20, 37, 43, 0.18);
+      border-radius: 18px;
       padding: 1.2rem 1.25rem;
       display: grid;
       gap: 0.45rem;
+      color: #14252B;
     }
 
     .journey-offer-item h3,
     .journey-offer-item p {
-      color: var(--white);
+      color: #14252B;
     }
 
     .journey-offer-item p {
-      opacity: 0.9;
+      opacity: 1;
     }
 
     .journey-offer-right .journey-offer-list {
       display: grid;
       gap: 0.75rem;
+    }
+
+    .journey-offer-cta {
+      grid-column: 1 / -1;
+      justify-self: start;
+      min-width: 0;
+      max-width: 100%;
     }
 
     .journey-for-whom {
@@ -555,12 +737,24 @@
     .journey-for-whom-grid p {
       margin: 0;
       padding: 1rem 1.1rem;
-      background: linear-gradient(135deg, rgba(255, 107, 53, 0.26), rgba(255, 107, 53, 0.12));
-      border: 1px solid rgba(255, 107, 53, 0.35);
+      background: linear-gradient(115deg, #FFAE52 0%, #FFE45C 30%, #4FD1B5 68%, #79D7FF 100%);
+      background-size: 280% 280%;
+      animation: journey-color-drift 9s ease-in-out infinite alternate;
+      border: 1px solid rgba(20, 37, 43, 0.18);
       border-radius: 18px;
-      color: var(--text-body);
+      color: #14252B;
       line-height: 1.7;
       font-size: 1rem;
+    }
+
+    @keyframes journey-color-drift {
+      from {
+        background-position: 0% 50%;
+      }
+
+      to {
+        background-position: 100% 50%;
+      }
     }
 
     .journey-for-whom-side {
@@ -583,7 +777,7 @@
     .journey-for-whom-side h2 {
       margin: 0;
       max-width: 620px;
-      font-family: 'Playfair Display', Georgia, serif;
+      font-family: var(--font-heading);
       font-size: clamp(2.2rem, 4vw, 3.4rem);
       line-height: 1.08;
       letter-spacing: -0.04em;
@@ -594,7 +788,94 @@
       white-space: nowrap;
     }
 
+    :root[data-theme="dark"] .journey-problem-inner,
+    :root[data-theme="dark"] .journey-self-history-inner,
+    :root[data-theme="dark"] .journey-for-whom-inner {
+      background: var(--surface-soft);
+      border-color: var(--border-soft);
+      box-shadow: var(--shadow-soft);
+    }
+
+    :root[data-theme="dark"] .journey-word-ribbon {
+      background: rgba(17, 27, 32, 0.94);
+      border-color: var(--border-soft);
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.28);
+    }
+
+    :root[data-theme="dark"] .journey-word-ribbon-group li {
+      color: var(--text-strong);
+    }
+
+    :root[data-theme="dark"] .journey-badge {
+      background: var(--surface);
+      border-color: var(--border-soft);
+      color: var(--text-strong);
+      box-shadow: var(--shadow-soft);
+    }
+
+    :root[data-theme="dark"] .journey-problem h2,
+    :root[data-theme="dark"] .journey-problem-text p:last-child,
+    :root[data-theme="dark"] .journey-self-history-copy h2,
+    :root[data-theme="dark"] .journey-for-whom-side h2 {
+      color: var(--text-strong);
+    }
+
+    :root[data-theme="dark"] .journey-problem-text p:last-child,
+    :root[data-theme="dark"] .journey-self-history-copy .journey-self-history-highlight {
+      border-color: var(--border-soft);
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .journey-for-whom-grid p,
+      .journey-offer-item,
+      .journey-button {
+        animation: none;
+        background-position: 50% 50%;
+      }
+
+      .journey-word-ribbon-track {
+        left: 0;
+        width: 100%;
+        overflow-x: auto;
+        animation: none;
+      }
+
+      .journey-word-ribbon-group[aria-hidden="true"] {
+        display: none;
+      }
+    }
+
     @media (max-width: 980px) {
+      .journey-word-ribbon {
+        overflow: hidden;
+      }
+
+      .journey-word-ribbon-track {
+        left: 0;
+        width: max-content;
+        justify-content: flex-start;
+        animation: journey-nav-loop-mobile 28s linear infinite;
+      }
+
+      .journey-word-ribbon-group[aria-hidden="true"] {
+        display: flex;
+      }
+
+      .journey-word-ribbon:hover .journey-word-ribbon-track {
+        animation-play-state: paused;
+      }
+
+      .journey-word-ribbon:focus-within .journey-word-ribbon-track {
+        left: 0;
+        width: 100%;
+        overflow-x: auto;
+        animation: none;
+      }
+
+      .journey-word-ribbon:focus-within .journey-word-ribbon-group[aria-hidden="true"] {
+        display: none;
+      }
+
       .journey-grid {
         grid-template-columns: 1fr;
       }
@@ -616,11 +897,12 @@
       }
 
       .journey-self-history-copy {
-        padding: 0 1.5rem 2.5rem;
+        order: -1;
+        padding: 2.5rem 1.5rem 0;
       }
 
       .journey-offer-inner {
-        grid-template-columns: 1fr;
+        grid-template-columns: minmax(0, 1fr);
       }
 
       .journey-for-whom-inner {
@@ -681,49 +963,140 @@
         padding: 2.2rem 1.3rem;
       }
     }
+
+    @media (max-width: 980px) and (prefers-reduced-motion: reduce) {
+      .journey-word-ribbon-track {
+        left: 0;
+        width: 100%;
+        overflow-x: auto;
+        justify-content: flex-start;
+        animation: none;
+      }
+
+      .journey-word-ribbon-group[aria-hidden="true"] {
+        display: none;
+      }
+    }
   </style>
 </head>
+
 <body>
+  <script>
+    try {
+      const savedTheme = localStorage.getItem('journey-theme');
+      const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+      document.documentElement.dataset.theme = savedTheme || (prefersDark ? 'dark' : 'light');
+    } catch {
+      document.documentElement.dataset.theme = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+    }
+  </script>
   <main class="journey-page">
     <div class="container-journey">
-      <section class="journey-hero">
+      <section class="journey-hero" id="inicio">
+        <button class="journey-theme-toggle" id="journey-theme-toggle" type="button" aria-label="Ativar modo escuro"
+          aria-pressed="false" title="Ativar modo escuro">
+          <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+            stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <circle cx="12" cy="12" r="4"></circle>
+            <path
+              d="M12 2v2m0 16v2M4.93 4.93l1.42 1.42m11.3 11.3 1.42 1.42M2 12h2m16 0h2M4.93 19.07l1.42-1.42m11.3-11.3 1.42-1.42">
+            </path>
+          </svg>
+          <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+            stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M20.9 13A9 9 0 0 1 11 3.1 9 9 0 1 0 20.9 13Z"></path>
+          </svg>
+        </button>
         <div class="journey-grid">
           <div class="journey-copy-wrap">
             <span class="journey-label">A vida já começou • uma jornada de 31 dias</span>
 
             <h1 class="journey-title">
-              <span class="lead">Isso não é uma simulação de voo</span>
-              <span class="main">A vida já começou.</span>
+              <span class="lead">Uma jornada para sair do piloto automático</span>
+              <span class="main text-gradient">A vida já começou.</span>
             </h1>
 
             <p class="journey-copy">
-              Você não precisa mudar tudo de uma vez. Precisa começar a mudar a direção.
-            </p>
-
-            <p class="journey-copy">
-              Uma experiência digital interativa para mulheres que cuidam de tudo e de todos — e perceberam que estão se deixando para depois.
+              Uma experiência digital de 31 dias, com reflexões e pequenas ações para mulheres que cuidam de todos e
+              querem voltar a escolher por si.
             </p>
 
             <div class="journey-cta-wrap">
               <div class="journey-cta-group">
-                <a href="#escolha-seu-ponto-de-partida" class="journey-button-secondary">
-                  <span>Quero mudar minha direção</span>
+                <a href="#o-que-voce-encontra" class="journey-button-secondary">
+                  <span>Ver o que está incluído</span>
                 </a>
               </div>
 
               <a href="#a-jornada" class="journey-button">
-                <span>Conhecer a jornada</span>
-                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                  <line x1="5" y1="12" x2="19" y2="12"></line>
-                  <polyline points="12 5 19 12 12 19"></polyline>
+                <span style="color: #0F2E3D;">Conhecer a jornada</span>
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#000000" stroke-width="2.2"
+                  stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                  <line x1="12" y1="5" x2="12" y2="19"></line>
+                  <polyline points="5 12 12 19 19 12"></polyline>
                 </svg>
               </a>
             </div>
           </div>
 
           <div class="journey-visual">
-            <img src="images/daiane-rosa-autora.png" alt="Daiane Rosa, autora e idealizadora da jornada A Vida já Começou">
+            <img src="images/daiane-rosa-autora.png"
+              alt="Daiane Rosa, autora e idealizadora da jornada A Vida já Começou">
             <div class="journey-badge">Uma jornada para recomeçar com propósito.</div>
+          </div>
+        </div>
+      </section>
+
+      <section class="journey-word-ribbon" aria-label="Palavras que expressam a essência da jornada">
+        <div class="journey-word-ribbon-track" tabindex="0">
+          <ul class="journey-word-ribbon-group">
+            <li>Despertar</li>
+            <li>Clareza</li>
+            <li>Autocuidado</li>
+            <li>Coragem</li>
+            <li>Escolhas</li>
+            <li>Direção</li>
+            <li>Movimento</li>
+            <li>Constância</li>
+            <li>Propósito</li>
+            <li>Recomeço</li>
+            <li>Sair do automático</li>
+            <li>Mudar a rota</li>
+          </ul>
+          <ul class="journey-word-ribbon-group" aria-hidden="true">
+            <li>Despertar</li>
+            <li>Clareza</li>
+            <li>Autocuidado</li>
+            <li>Coragem</li>
+            <li>Escolhas</li>
+            <li>Direção</li>
+            <li>Movimento</li>
+            <li>Constância</li>
+            <li>Propósito</li>
+            <li>Recomeço</li>
+            <li>Sair do automático</li>
+            <li>Mudar a rota</li>
+          </ul>
+        </div>
+      </section>
+
+      <section class="journey-for-whom" id="para-quem-e">
+        <div class="journey-for-whom-inner">
+          <div class="journey-for-whom-side">
+            <div>
+              <span class="journey-for-whom-label">Para quem é</span>
+              <h2>Para a mulher que sente que chegou a hora de <span class="journey-for-whom-inline">voltar para
+                  si.</span></h2>
+            </div>
+          </div>
+
+          <div class="journey-for-whom-copy">
+            <div class="journey-for-whom-grid">
+              <p>Cuida de tudo e de todos, mas quase nunca se coloca na própria agenda.</p>
+              <p>Sente que os dias passam e decisões importantes continuam esperando.</p>
+              <p>Não quer uma mudança impossível — quer um primeiro passo verdadeiro.</p>
+              <p>Deseja construir uma direção com mais consciência, presença e autonomia.</p>
+            </div>
           </div>
         </div>
       </section>
@@ -739,9 +1112,11 @@
 
           <div class="journey-problem-right">
             <div class="journey-problem-text">
-              <p>A agenda está cheia. As pessoas contam com você. Sempre existe uma urgência, uma tarefa, alguém precisando de cuidado.</p>
+              <p>A agenda está cheia. As pessoas contam com você. Sempre existe uma urgência, uma tarefa, alguém
+                precisando de cuidado.</p>
 
-              <p>E, sem perceber, sua própria vida vai ficando para depois — não por falta de vontade, mas porque o automático parece ser o único jeito de seguir.</p>
+              <p>E, sem perceber, sua própria vida vai ficando para depois — não por falta de vontade, mas porque o
+                automático parece ser o único jeito de seguir.</p>
 
               <p>Não é preciso abandonar tudo. É preciso voltar a escolher para onde você está indo.</p>
             </div>
@@ -754,7 +1129,8 @@
           <div class="journey-path-head">
             <span class="journey-path-label">A jornada</span>
             <h2>31 dias para recalcular a rota</h2>
-            <p class="journey-path-intro">Um percurso guiado para transformar consciência em decisões pequenas, possíveis e alinhadas à vida que você quer construir.</p>
+            <p class="journey-path-intro">Um percurso guiado para transformar consciência em decisões pequenas,
+              possíveis e alinhadas à vida que você quer construir.</p>
           </div>
 
           <div class="journey-steps">
@@ -783,20 +1159,22 @@
         <div class="journey-self-history-inner">
           <div class="journey-self-history-visual">
             <img src="images/daiane-e-menina.png" alt="Daiane Rosa com a menina que ela foi">
-            <div class="journey-self-history-quote">Em que momento a menina que você foi começou a ficar para depois?</div>
+            <div class="journey-self-history-quote">Em que momento a menina que você foi começou a ficar para depois?
+            </div>
           </div>
 
           <div class="journey-self-history-copy">
             <span class="journey-self-path-label">Olhar para si </span>
             <h2>também é olhar para a própria história</h2>
 
-            <p>Para os sonhos que ficaram pelo caminho, para as escolhas que trouxeram você até aqui e para tudo aquilo que ainda pode começar.</p>
+            <p>Para os sonhos que ficaram pelo caminho, para as escolhas que trouxeram você até aqui e para tudo aquilo
+              que ainda pode começar.</p>
 
             <p>Porque a mulher que você é hoje ainda carrega a menina que um dia sonhou com essa vida.</p>
 
             <p>E talvez esteja na hora de olhar para ela e se perguntar:</p>
 
-            <p class="journey-self-history-highlight">Em que momento eu comecei a me deixar para depois?</p>
+            <p class="journey-self-history-highlight text-gradient">Em que momento eu comecei a me deixar para depois?</p>
 
             <p>A vida já começou. E você ainda pode escolher o que fará com os próximos capítulos.</p>
           </div>
@@ -833,29 +1211,37 @@
               </li>
             </ul>
           </div>
+
+          <a class="journey-button journey-offer-cta" href="https://chk.eduzz.com/kwphf3kn"
+            target="_blank" rel="noopener noreferrer">
+            <span style="color: #0F2E3D;">Quero começar</span>
+          </a>
         </div>
       </section>
 
-      <section class="journey-for-whom" id="para-quem-e">
-        <div class="journey-for-whom-inner">
-          <div class="journey-for-whom-side">
-            <div>
-              <span class="journey-for-whom-label">Para quem é</span>
-              <h2>Para a mulher que sente que chegou a hora de <span class="journey-for-whom-inline">voltar para si.</span></h2>
-            </div>
-          </div>
-
-          <div class="journey-for-whom-copy">
-            <div class="journey-for-whom-grid">
-              <p>Cuida de tudo e de todos, mas quase nunca se coloca na própria agenda.</p>
-              <p>Sente que os dias passam e decisões importantes continuam esperando.</p>
-              <p>Não quer uma mudança impossível — quer um primeiro passo verdadeiro.</p>
-              <p>Deseja construir uma direção com mais consciência, presença e autonomia.</p>
-            </div>
-          </div>
-        </div>
-      </section>
     </div>
   </main>
+  <script>
+    const themeToggle = document.getElementById('journey-theme-toggle');
+    const updateThemeToggle = (isDark) => {
+      const label = isDark ? 'Ativar modo claro' : 'Ativar modo escuro';
+      themeToggle.setAttribute('aria-label', label);
+      themeToggle.setAttribute('aria-pressed', String(isDark));
+      themeToggle.title = label;
+    };
+
+    updateThemeToggle(document.documentElement.dataset.theme === 'dark');
+
+    themeToggle.addEventListener('click', () => {
+      const isDark = document.documentElement.dataset.theme !== 'dark';
+      document.documentElement.dataset.theme = isDark ? 'dark' : 'light';
+      updateThemeToggle(isDark);
+
+      try {
+        localStorage.setItem('journey-theme', isDark ? 'dark' : 'light');
+      } catch {}
+    });
+  </script>
 </body>
+
 </html>
