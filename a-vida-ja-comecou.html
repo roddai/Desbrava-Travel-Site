@@ -501,28 +501,97 @@
     }
 
     .journey-offer-item {
-      background: rgba(255, 255, 255, 0.06);
-      border: 1px solid rgba(255, 255, 255, 0.12);
+      background: linear-gradient(135deg, rgba(255, 107, 53, 0.22), rgba(255, 107, 53, 0.08));
+      border: 1px solid rgba(255, 107, 53, 0.35);
       border-radius: 20px;
       padding: 1.2rem 1.25rem;
       display: grid;
       gap: 0.45rem;
     }
 
-    .journey-offer-item h3 {
-      margin: 0;
+    .journey-offer-item h3,
+    .journey-offer-item p {
       color: var(--white);
-      font-size: clamp(1.2rem, 2vw, 1.6rem);
-      line-height: 1.2;
-      font-family: 'Playfair Display', Georgia, serif;
-      letter-spacing: -0.03em;
     }
 
     .journey-offer-item p {
+      opacity: 0.9;
+    }
+
+    .journey-offer-right .journey-offer-list {
+      display: grid;
+      gap: 0.75rem;
+    }
+
+    .journey-for-whom {
+      padding: 0 1.5rem 5rem;
+    }
+
+    .journey-for-whom-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+      background: rgba(255, 255, 255, 0.72);
+      border: 1px solid rgba(30, 77, 99, 0.08);
+      border-radius: 32px;
+      box-shadow: var(--shadow-soft);
+      padding: 3rem 2.5rem;
+      display: grid;
+      grid-template-columns: 0.9fr 1.1fr;
+      gap: 2rem;
+      align-items: center;
+    }
+
+    .journey-for-whom-copy {
+      display: grid;
+      gap: 1rem;
+    }
+
+    .journey-for-whom-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 1rem;
+    }
+
+    .journey-for-whom-grid p {
       margin: 0;
-      color: rgba(255, 255, 255, 0.8);
+      padding: 1rem 1.1rem;
+      background: linear-gradient(135deg, rgba(255, 107, 53, 0.26), rgba(255, 107, 53, 0.12));
+      border: 1px solid rgba(255, 107, 53, 0.35);
+      border-radius: 18px;
+      color: var(--text-body);
       line-height: 1.7;
       font-size: 1rem;
+    }
+
+    .journey-for-whom-side {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 100%;
+    }
+
+    .journey-for-whom-side .journey-for-whom-label {
+      display: inline-block;
+      margin-bottom: 0.6rem;
+      font-size: 0.8rem;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      font-weight: 700;
+      color: var(--accent);
+    }
+
+    .journey-for-whom-side h2 {
+      margin: 0;
+      max-width: 620px;
+      font-family: 'Playfair Display', Georgia, serif;
+      font-size: clamp(2.2rem, 4vw, 3.4rem);
+      line-height: 1.08;
+      letter-spacing: -0.04em;
+      color: var(--charcoal-deep);
+    }
+
+    .journey-for-whom-side h2 .journey-for-whom-inline {
+      white-space: nowrap;
     }
 
     @media (max-width: 980px) {
@@ -551,6 +620,14 @@
       }
 
       .journey-offer-inner {
+        grid-template-columns: 1fr;
+      }
+
+      .journey-for-whom-inner {
+        grid-template-columns: 1fr;
+      }
+
+      .journey-for-whom-grid {
         grid-template-columns: 1fr;
       }
     }
@@ -593,6 +670,14 @@
       }
 
       .journey-offer-inner {
+        padding: 2.2rem 1.3rem;
+      }
+
+      .journey-for-whom {
+        padding: 0 1rem 4rem;
+      }
+
+      .journey-for-whom-inner {
         padding: 2.2rem 1.3rem;
       }
     }
@@ -747,6 +832,26 @@
                 <p>Um caminho para enxergar seus movimentos e reconhecer sua própria história.</p>
               </li>
             </ul>
+          </div>
+        </div>
+      </section>
+
+      <section class="journey-for-whom" id="para-quem-e">
+        <div class="journey-for-whom-inner">
+          <div class="journey-for-whom-side">
+            <div>
+              <span class="journey-for-whom-label">Para quem é</span>
+              <h2>Para a mulher que sente que chegou a hora de <span class="journey-for-whom-inline">voltar para si.</span></h2>
+            </div>
+          </div>
+
+          <div class="journey-for-whom-copy">
+            <div class="journey-for-whom-grid">
+              <p>Cuida de tudo e de todos, mas quase nunca se coloca na própria agenda.</p>
+              <p>Sente que os dias passam e decisões importantes continuam esperando.</p>
+              <p>Não quer uma mudança impossível — quer um primeiro passo verdadeiro.</p>
+              <p>Deseja construir uma direção com mais consciência, presença e autonomia.</p>
+            </div>
           </div>
         </div>
       </section>
